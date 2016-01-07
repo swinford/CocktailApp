@@ -130,7 +130,6 @@
         <!--Search View Controller-->
         <scene sceneID="Ive-Ia-6DC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rem-LI-8n6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="HEg-Bg-8Y4" customClass="SearchViewController" customModule="CocktailApp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M7X-Gp-0S7"/>
@@ -143,23 +142,65 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="FP8-yD-dVE">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="DiA-ip-sPv"/>
-                                    <constraint firstAttribute="width" constant="600" id="Vj6-Mb-uL9"/>
+                                    <constraint firstAttribute="width" constant="600" id="6Zd-8M-DkI"/>
+                                    <constraint firstAttribute="height" constant="44" id="Qqm-T0-gii"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h5r-yh-lv8">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="492" id="EbA-0b-TAP"/>
+                                    <constraint firstAttribute="width" constant="600" id="Tvo-LV-432"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Drink" selectionStyle="default" indentationWidth="10" reuseIdentifier="DrinkCell" rowHeight="120" id="ks6-ko-fFW">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ks6-ko-fFW" id="AsK-Yd-Dqf">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="DrinkImage" translatesAutoresizingMaskIntoConstraints="NO" id="tQ5-gE-hqO">
+                                                    <rect key="frame" x="8" y="0.0" width="100" height="111.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="DrinkName" text="Drink Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKK-Ld-ibz">
+                                                    <rect key="frame" x="116" y="8" width="476" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="DrinkType" text="Drink Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-75-HOB">
+                                                    <rect key="frame" x="116" y="49" width="476" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FP8-yD-dVE" firstAttribute="leading" secondItem="Jhq-oF-rpH" secondAttribute="leading" id="9IE-Io-VKC"/>
-                            <constraint firstAttribute="trailing" secondItem="FP8-yD-dVE" secondAttribute="trailing" id="AQp-3K-poh"/>
-                            <constraint firstItem="FP8-yD-dVE" firstAttribute="top" secondItem="M7X-Gp-0S7" secondAttribute="bottom" id="MkC-BL-UBN"/>
+                            <constraint firstAttribute="trailing" secondItem="h5r-yh-lv8" secondAttribute="trailing" id="1kA-vZ-1Fu"/>
+                            <constraint firstItem="FP8-yD-dVE" firstAttribute="top" secondItem="M7X-Gp-0S7" secondAttribute="bottom" id="2Kt-NZ-VfB"/>
+                            <constraint firstItem="FP8-yD-dVE" firstAttribute="leading" secondItem="Jhq-oF-rpH" secondAttribute="leading" id="3ot-HG-mp1"/>
+                            <constraint firstItem="h5r-yh-lv8" firstAttribute="top" secondItem="FP8-yD-dVE" secondAttribute="bottom" id="V5t-65-nDj"/>
+                            <constraint firstItem="h5r-yh-lv8" firstAttribute="top" secondItem="FP8-yD-dVE" secondAttribute="bottom" id="YMn-0p-yfk"/>
+                            <constraint firstAttribute="trailing" secondItem="FP8-yD-dVE" secondAttribute="trailing" id="c1h-tn-arc"/>
+                            <constraint firstItem="h5r-yh-lv8" firstAttribute="leading" secondItem="Jhq-oF-rpH" secondAttribute="leading" id="pM6-Db-DfM"/>
+                            <constraint firstItem="a4n-oV-8SE" firstAttribute="top" secondItem="h5r-yh-lv8" secondAttribute="bottom" id="pdQ-wF-ig5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="SearchBar" destination="FP8-yD-dVE" id="rw9-Kp-t36"/>
+                        <outlet property="TableView" destination="h5r-yh-lv8" id="MJh-dp-hoK"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rem-LI-8n6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1797" y="-1955"/>
         </scene>

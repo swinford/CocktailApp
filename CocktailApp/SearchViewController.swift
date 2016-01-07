@@ -8,21 +8,20 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchBarDelegate {
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var TableView: UITableView!
     @IBOutlet weak var SearchBar: UISearchBar!
     
-    // search in progress or not
     var isSearching : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         for subView in self.SearchBar.subviews
         {
             for subsubView in subView.subviews
             {
-            
                 if let textField = subsubView as? UITextField
                 {
                     textField.attributedPlaceholder  = NSAttributedString(string: NSLocalizedString("Search", comment: ""))
@@ -31,7 +30,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             }
         }
 
-        // set search bar delegate
         self.SearchBar.delegate = self
     }
     
@@ -39,17 +37,80 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         
         if self.SearchBar.text!.isEmpty {
             
-            // set searching false
             self.isSearching = false
             
-            
         }else{
-            
-            // set searghing true
+
             self.isSearching = true
             
-            self.SearchBar.text!.lowercaseString
+            let userSearchInput = self.SearchBar.text!.lowercaseString
+            let newString = userSearchInput.stringByReplacingOccurrencesOfString(" ", withString: "%20", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            
+            let postEndpoint: String = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + newString
+            
+            guard let url = NSURL(string: postEndpoint) else {
+                print("Error: cannot create URL")
+                return
+            }
+            
+            let urlRequest = NSURLRequest(URL: url)
+            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let session = NSURLSession(configuration: config)
+            
+            let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
+                guard let responseData = data else {
+                    print("Error: did not receive data")
+                    return
+                }
+                guard error == nil else {
+                    print("error calling GET on www.thecocktaildb.com")
+                    print(error)
+                    return
+                }
+              
+                let post: NSDictionary
+                do {
+                    post = try NSJSONSerialization.JSONObjectWithData(responseData,
+                        options: []) as! NSDictionary
+                } catch  {
+                    print("error trying to convert data to JSON")
+                    return
+                }
+
+                var count = 1
+                if let drinks = post["drinks"] as? [NSDictionary] {
+                    for drink in drinks {
+                        if let strDrink = drink["strDrink"] as? String {
+                            print(String(count) + ". " + strDrink)
+                            //self.TableData.append(strDrink)
+                            count++
+                        }
+                        if let strCategory = drink["strCategory"] as? String {
+                            print("    Category: " + strCategory)
+                        }
+                        if let strDrinkThumb = drink["strDrinkThumb"] as? String {
+                            print("    Thumbnail Image: " + strDrinkThumb)
+                        }
+                    }
+                }
+
+            })
+            task.resume()
+            
         }
+        
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
     
