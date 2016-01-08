@@ -12,6 +12,7 @@
 		F42244D21C30C2D8009036B0 /* CabinetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244D11C30C2D8009036B0 /* CabinetViewController.swift */; };
 		F42244D41C30C2EA009036B0 /* GeniusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244D31C30C2EA009036B0 /* GeniusViewController.swift */; };
 		F42244D81C30F330009036B0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244D71C30F330009036B0 /* SearchViewController.swift */; };
+		F4291B3B1C4043F900F77569 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4291B3A1C4043F900F77569 /* DrinkViewController.swift */; };
 		F44B485C1C2E5EAE00511866 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B485B1C2E5EAE00511866 /* AppDelegate.swift */; };
 		F44B485E1C2E5EAE00511866 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B485D1C2E5EAE00511866 /* ViewController.swift */; };
 		F44B48611C2E5EAE00511866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44B485F1C2E5EAE00511866 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		F42244D11C30C2D8009036B0 /* CabinetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetViewController.swift; sourceTree = "<group>"; };
 		F42244D31C30C2EA009036B0 /* GeniusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeniusViewController.swift; sourceTree = "<group>"; };
 		F42244D71C30F330009036B0 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F4291B3A1C4043F900F77569 /* DrinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
 		F44B48581C2E5EAE00511866 /* CocktailApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44B485B1C2E5EAE00511866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F44B485D1C2E5EAE00511866 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				F42244CF1C30C2BE009036B0 /* BACViewController.swift */,
 				F42244D11C30C2D8009036B0 /* CabinetViewController.swift */,
 				F42244D31C30C2EA009036B0 /* GeniusViewController.swift */,
+				F4291B3A1C4043F900F77569 /* DrinkViewController.swift */,
 			);
 			path = CocktailApp;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				F42244CE1C30C2A2009036B0 /* StoreViewController.swift in Sources */,
 				F42244D81C30F330009036B0 /* SearchViewController.swift in Sources */,
 				F42244D41C30C2EA009036B0 /* GeniusViewController.swift in Sources */,
+				F4291B3B1C4043F900F77569 /* DrinkViewController.swift in Sources */,
 				F42244D21C30C2D8009036B0 /* CabinetViewController.swift in Sources */,
 				F42244D01C30C2BE009036B0 /* BACViewController.swift in Sources */,
 				F44B485E1C2E5EAE00511866 /* ViewController.swift in Sources */,
