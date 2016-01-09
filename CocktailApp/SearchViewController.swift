@@ -137,7 +137,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                             count++
                         }
                         if let strDrinkThumb = drink["strDrinkThumb"] as? String {
-                            //print("    Thumbnail Image: " + strDrinkThumb)
                             adrink.strDrinkThumb = strDrinkThumb
                         }
                         if let strGlass = drink["strGlass"] as? String {
@@ -244,12 +243,16 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                         }
  
                         self.TableData.append(adrink)
-                        self.TableView.reloadData()
                     }
                 }
+    
             })
             task.resume()
         }
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        self.TableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -257,14 +260,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
-        //title = TableData[indexPath.row].strDrink
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = TableData[indexPath.row].strDrink;
+        cell.textLabel?.text = TableData[indexPath.row].strDrink
         cell.detailTextLabel?.text = TableData[indexPath.row].strCategory
         
         let imageString = TableData[indexPath.row].strDrinkThumb
-        
         if (imageString == ""){
             let noDrinkImage : UIImage = UIImage(named: "noimage.jpg")!
             cell.imageView!.image = noDrinkImage
@@ -300,13 +301,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "DrinkSegue") {
-            // initialize new view controller and cast it as your view controller
             let drinkViewController = segue.destinationViewController as! DrinkViewController
-            // your new view controller should have property that will store passed value
             drinkViewController.passedValue = valueToPass
-            // declare myArray in your drinkViewController and then assign it here
-            // now your array that you passed will be available through myArray
-            //drinkViewController.passedValue = sender
             drinkViewController.passedValue = sender as! Drinks
         }
     }
