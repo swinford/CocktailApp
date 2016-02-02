@@ -17,6 +17,7 @@ class DrinkViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var DrinkImage: UIImageView!
     @IBOutlet weak var DrinkAlcoholic: UILabel!
     @IBOutlet weak var IngredientTableView: UITableView!
+    @IBOutlet weak var DrinkNavigation: UINavigationItem!
     
     var passedValue : SearchViewController.Drinks!
     var IngredientArray:Array< String > = Array < String >()
@@ -24,7 +25,7 @@ class DrinkViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DrinkNameLabel.text = passedValue!.strDrink
+        DrinkNavigation.title = passedValue!.strDrink
         DrinkInstructions.text = passedValue!.strInstructions
         DrinkGlass.text = passedValue!.strGlass
         DrinkType.text = passedValue!.strCategory

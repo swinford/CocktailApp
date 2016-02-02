@@ -13,6 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var RandomDrinkName: UILabel!
     @IBOutlet weak var RandomDrinkImage: UIImageView!
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
+    @IBOutlet weak var GeniusButton: UIButton!
+    @IBOutlet weak var CabinetButton: UIButton!
+    @IBOutlet weak var BACButton: UIButton!
+    @IBOutlet weak var StoreButton: UIButton!
+    @IBOutlet weak var SearchButton: UIButton!
     var TableData:Array< Drinks > = Array < Drinks >()
 
     class Drinks {
@@ -58,10 +65,38 @@ class ViewController: UIViewController {
         var strMeasure14: String = ""
         var strMeasure15: String = ""
     }
-
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //SearchButton.backgroundColor = UIColor.grayColor()
+        SearchButton.layer.cornerRadius = 3
+        SearchButton.layer.borderWidth = 1
+        SearchButton.layer.borderColor = UIColor.blackColor().CGColor
+        //StoreButton.backgroundColor = UIColor.grayColor()
+        StoreButton.layer.cornerRadius = 3
+        StoreButton.layer.borderWidth = 1
+        StoreButton.layer.borderColor = UIColor.blackColor().CGColor
+        //BACButton.backgroundColor = UIColor.grayColor()
+        BACButton.layer.cornerRadius = 3
+        BACButton.layer.borderWidth = 1
+        BACButton.layer.borderColor = UIColor.blackColor().CGColor
+        //CabinetButton.backgroundColor = UIColor.grayColor()
+        CabinetButton.layer.cornerRadius = 3
+        CabinetButton.layer.borderWidth = 1
+        CabinetButton.layer.borderColor = UIColor.blackColor().CGColor
+        //GeniusButton.backgroundColor = UIColor.grayColor()
+        GeniusButton.layer.cornerRadius = 3
+        GeniusButton.layer.borderWidth = 1
+        GeniusButton.layer.borderColor = UIColor.blackColor().CGColor
+        let imageView = self.RandomDrinkImage
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        imageView.userInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
         
         let postEndpoint: String = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
         
@@ -105,6 +140,7 @@ class ViewController: UIViewController {
                         count++
                     }
                     if let strDrinkThumb = drink["strDrinkThumb"] as? String {
+                        print("    " + strDrinkThumb)
                         adrink.strDrinkThumb = strDrinkThumb
                     }
                     if let strGlass = drink["strGlass"] as? String {
@@ -227,11 +263,15 @@ class ViewController: UIViewController {
         task.resume()
     }
     
+    func imageTapped(img: AnyObject)
+    {
+        // Your action
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 

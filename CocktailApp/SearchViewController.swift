@@ -12,7 +12,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
 
     @IBOutlet weak var TableView: UITableView!
     @IBOutlet weak var SearchBar: UISearchBar!
-    
+    @IBOutlet weak var SearchNavigation: UINavigationItem!
     var valueToPass: Drinks!
     var isSearching: Bool = false
     
@@ -62,6 +62,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     var TableData:Array< Drinks > = Array < Drinks >()
     
     override func viewDidLoad() {
+        SearchNavigation.backBarButtonItem?.title = "Back"
         super.viewDidLoad()
         
         for subView in self.SearchBar.subviews
@@ -79,6 +80,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         self.SearchBar.delegate = self
         self.TableView.delegate = self
         self.TableView.dataSource = self
+        
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -261,9 +263,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
         cell.textLabel?.text = TableData[indexPath.row].strDrink
-        cell.detailTextLabel?.text = TableData[indexPath.row].strCategory
+        cell.detailTextLabel?.text = TableData[indexPath.row].strGlass
+        cell.detailTextLabel?.textAlignment = .Center
         
         let imageString = TableData[indexPath.row].strDrinkThumb
         if (imageString == ""){
@@ -306,4 +308,5 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             drinkViewController.passedValue = sender as! Drinks
         }
     }
+
 }
