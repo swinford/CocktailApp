@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1E50FC1C6038AF002EF333 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E50FB1C6038AF002EF333 /* DatePickerDialog.swift */; };
 		F42244CE1C30C2A2009036B0 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244CD1C30C2A2009036B0 /* StoreViewController.swift */; };
 		F42244D01C30C2BE009036B0 /* BACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244CF1C30C2BE009036B0 /* BACViewController.swift */; };
 		F42244D21C30C2D8009036B0 /* CabinetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244D11C30C2D8009036B0 /* CabinetViewController.swift */; };
@@ -20,11 +21,8 @@
 		F44B48661C2E5EAE00511866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44B48641C2E5EAE00511866 /* LaunchScreen.storyboard */; };
 		F44B48711C2E5EAE00511866 /* CocktailAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B48701C2E5EAE00511866 /* CocktailAppTests.swift */; };
 		F44B487C1C2E5EAE00511866 /* CocktailAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44B487B1C2E5EAE00511866 /* CocktailAppUITests.swift */; };
+		F4D010C81C5FEC9400D11B67 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D010C71C5FEC9400D11B67 /* libsqlite3.0.tbd */; };
 		F4D010CA1C6003FA00D11B67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D010C91C6003FA00D11B67 /* CoreData.framework */; };
-		F4D010CD1C61341D00D11B67 /* myCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4D010CB1C61341D00D11B67 /* myCoreData.xcdatamodeld */; };
-		F4D010D01C61356200D11B67 /* Cabinet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D010CE1C61356200D11B67 /* Cabinet+CoreDataProperties.swift */; };
-		F4D010D11C61356200D11B67 /* Cabinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D010CF1C61356200D11B67 /* Cabinet.swift */; };
-		F4D010D31C6135C700D11B67 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D010D21C6135C700D11B67 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B1E50FB1C6038AF002EF333 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		F42244CD1C30C2A2009036B0 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		F42244CF1C30C2BE009036B0 /* BACViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BACViewController.swift; sourceTree = "<group>"; };
 		F42244D11C30C2D8009036B0 /* CabinetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CabinetViewController.swift; sourceTree = "<group>"; };
@@ -64,11 +63,8 @@
 		F44B48771C2E5EAE00511866 /* CocktailAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocktailAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44B487B1C2E5EAE00511866 /* CocktailAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailAppUITests.swift; sourceTree = "<group>"; };
 		F44B487D1C2E5EAE00511866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4D010C71C5FEC9400D11B67 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F4D010C91C6003FA00D11B67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		F4D010CC1C61341D00D11B67 /* myCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myCoreData.xcdatamodel; sourceTree = "<group>"; };
-		F4D010CE1C61356200D11B67 /* Cabinet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Cabinet+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F4D010CF1C61356200D11B67 /* Cabinet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cabinet.swift; sourceTree = "<group>"; };
-		F4D010D21C6135C700D11B67 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D010CA1C6003FA00D11B67 /* CoreData.framework in Frameworks */,
+				F4D010C81C5FEC9400D11B67 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,9 +97,9 @@
 		F44B484F1C2E5EAE00511866 = {
 			isa = PBXGroup;
 			children = (
-				F4D010CE1C61356200D11B67 /* Cabinet+CoreDataProperties.swift */,
-				F4D010CF1C61356200D11B67 /* Cabinet.swift */,
+				2B1E50FB1C6038AF002EF333 /* DatePickerDialog.swift */,
 				F4D010C91C6003FA00D11B67 /* CoreData.framework */,
+				F4D010C71C5FEC9400D11B67 /* libsqlite3.0.tbd */,
 				F44B485A1C2E5EAE00511866 /* CocktailApp */,
 				F44B486F1C2E5EAE00511866 /* CocktailAppTests */,
 				F44B487A1C2E5EAE00511866 /* CocktailAppUITests */,
@@ -135,8 +132,6 @@
 				F42244D11C30C2D8009036B0 /* CabinetViewController.swift */,
 				F42244D31C30C2EA009036B0 /* GeniusViewController.swift */,
 				F4291B3A1C4043F900F77569 /* DrinkViewController.swift */,
-				F4D010CB1C61341D00D11B67 /* myCoreData.xcdatamodeld */,
-				F4D010D21C6135C700D11B67 /* DataController.swift */,
 			);
 			path = CocktailApp;
 			sourceTree = "<group>";
@@ -294,14 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F42244CE1C30C2A2009036B0 /* StoreViewController.swift in Sources */,
-				F4D010D31C6135C700D11B67 /* DataController.swift in Sources */,
 				F42244D81C30F330009036B0 /* SearchViewController.swift in Sources */,
+				2B1E50FC1C6038AF002EF333 /* DatePickerDialog.swift in Sources */,
 				F42244D41C30C2EA009036B0 /* GeniusViewController.swift in Sources */,
 				F4291B3B1C4043F900F77569 /* DrinkViewController.swift in Sources */,
-				F4D010CD1C61341D00D11B67 /* myCoreData.xcdatamodeld in Sources */,
 				F42244D21C30C2D8009036B0 /* CabinetViewController.swift in Sources */,
-				F4D010D01C61356200D11B67 /* Cabinet+CoreDataProperties.swift in Sources */,
-				F4D010D11C61356200D11B67 /* Cabinet.swift in Sources */,
 				F42244D01C30C2BE009036B0 /* BACViewController.swift in Sources */,
 				F44B485E1C2E5EAE00511866 /* ViewController.swift in Sources */,
 				F44B485C1C2E5EAE00511866 /* AppDelegate.swift in Sources */,
@@ -552,19 +544,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F4D010CB1C61341D00D11B67 /* myCoreData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F4D010CC1C61341D00D11B67 /* myCoreData.xcdatamodel */,
-			);
-			currentVersion = F4D010CC1C61341D00D11B67 /* myCoreData.xcdatamodel */;
-			path = myCoreData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F44B48501C2E5EAE00511866 /* Project object */;
 }

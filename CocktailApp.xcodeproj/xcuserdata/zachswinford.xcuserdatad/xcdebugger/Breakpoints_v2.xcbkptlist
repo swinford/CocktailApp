@@ -160,11 +160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CocktailApp/CabinetViewController.swift"
-            timestampString = "476050466.227988"
+            timestampString = "476140812.528001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "textField(_:shouldChangeCharactersInRange:replacementString:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -176,11 +176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CocktailApp/CabinetViewController.swift"
-            timestampString = "476050466.227988"
+            timestampString = "476140812.528001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "textField(_:shouldChangeCharactersInRange:replacementString:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -192,11 +192,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CocktailApp/CabinetViewController.swift"
-            timestampString = "476050466.227988"
+            timestampString = "476140812.528001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "buttonPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -208,90 +208,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CocktailApp/CabinetViewController.swift"
-            timestampString = "476048132.738291"
+            timestampString = "476140812.528001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "CabinetViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CocktailApp.CabinetViewController.ingredientArray.getter : Swift.Array&lt;Swift.String&gt;"
-                  moduleName = "CocktailApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zachswinford/Desktop/CocktailApp/CocktailApp/CabinetViewController.swift"
-                  timestampString = "476049672.980501"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CocktailApp.CabinetViewController.ingredientArray.setter : Swift.Array&lt;Swift.String&gt;"
-                  moduleName = "CocktailApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zachswinford/Desktop/CocktailApp/CocktailApp/CabinetViewController.swift"
-                  timestampString = "476049672.980673"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CocktailApp.CabinetViewController.ingredientArray.materializeForSet : Swift.Array&lt;Swift.String&gt;"
-                  moduleName = "CocktailApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zachswinford/Desktop/CocktailApp/CocktailApp/CabinetViewController.swift"
-                  timestampString = "476049672.980814"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CocktailApp.CabinetViewController.init (CocktailApp.CabinetViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; CocktailApp.CabinetViewController"
-                  moduleName = "CocktailApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zachswinford/Desktop/CocktailApp/CocktailApp/CabinetViewController.swift"
-                  timestampString = "476049672.980959"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CocktailApp.CabinetViewController.init (CocktailApp.CabinetViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;CocktailApp.CabinetViewController&gt;"
-                  moduleName = "CocktailApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zachswinford/Desktop/CocktailApp/CocktailApp/CabinetViewController.swift"
-                  timestampString = "476049672.981098"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -301,12 +224,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CocktailApp/CabinetViewController.swift"
-            timestampString = "476065361.751721"
+            timestampString = "476140812.528001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "buttonPressed(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CocktailApp/GeniusViewController.swift"
+            timestampString = "476135876.968457"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CocktailApp/GeniusViewController.swift"
+            timestampString = "476135876.968457"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CocktailApp/CabinetViewController.swift"
+            timestampString = "476141012.024038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

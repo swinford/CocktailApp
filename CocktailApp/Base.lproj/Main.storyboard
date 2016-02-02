@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="958.39999999999998" y="-1017.6666666666664"/>
         </scene>
-        <!--BAC View Controller-->
+        <!--BAC_Calculator-->
         <scene sceneID="PJW-a3-fs4">
             <objects>
-                <viewController title="BAC View Controller" id="tMm-h4-yI0" customClass="BACViewController" customModule="CocktailApp" sceneMemberID="viewController">
+                <viewController title="BAC_Calculator" id="tMm-h4-yI0" customClass="BACViewController" customModule="CocktailApp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sFX-bA-cNC"/>
                         <viewControllerLayoutGuide type="bottom" id="xso-hU-hcD"/>
@@ -267,13 +267,49 @@
                     <view key="view" contentMode="scaleToFill" id="4u3-Yi-I39">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qJ-I5-LmD">
+                                <rect key="frame" x="29" y="100" width="165" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zpo-bl-n7m">
+                                <rect key="frame" x="230" y="100" width="61" height="30"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editTimeButton:" destination="tMm-h4-yI0" eventType="touchUpInside" id="qPG-8H-5qX"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0WK-uy-jrv">
+                                <rect key="frame" x="51" y="171" width="121" height="29"/>
+                                <segments>
+                                    <segment title="Male"/>
+                                    <segment title="Female"/>
+                                </segments>
+                            </segmentedControl>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YdV-za-1v1">
+                                <rect key="frame" x="29" y="227" width="116" height="81"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFX-na-yf3">
+                                <rect key="frame" x="215" y="257" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="WKO-fj-zNV"/>
+                    <connections>
+                        <outlet property="TextViewTime" destination="1qJ-I5-LmD" id="L1s-d8-H8V"/>
+                        <outlet property="gender" destination="0WK-uy-jrv" id="ld6-ND-Gnr"/>
+                        <outlet property="weight" destination="YdV-za-1v1" id="ajC-3F-hQj"/>
+                        <outlet property="weightLabel" destination="WFX-na-yf3" id="f7q-vo-4EK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGQ-ay-UgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958.39999999999998" y="-203.5333333333333"/>
+            <point key="canvasLocation" x="1030" y="-204"/>
         </scene>
         <!--Cabinet-->
         <scene sceneID="xSR-Gx-Ldw">
@@ -287,14 +323,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a new ingredient..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="l4z-XO-0qN">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a new ingredient..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4z-XO-0qN">
                                 <rect key="frame" x="20" y="96" width="195" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-hu-QKp">
                                 <rect key="frame" x="223" y="95" width="77" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bXh-C6-4xy">
@@ -337,15 +373,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lsV-3F-Rpa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="25" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lsV-3F-Rpa">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="50" id="eeM-GB-WmI">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="25" id="eeM-GB-WmI">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eeM-GB-WmI" id="x7B-F9-4da">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="24.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -365,6 +401,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wph-aB-v6h"/>
+        <segue reference="zuZ-T8-sY3"/>
     </inferredMetricsTieBreakers>
 </document>
