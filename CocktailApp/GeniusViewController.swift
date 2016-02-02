@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class GeniusViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var TableView: UITableView!
+    
+    let ingredientFetch = NSFetchRequest(entityName: "Cabinet")
+    let moc = DataController().managedObjectContext
+    var fetchedIngredient = [Cabinet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,50 +24,36 @@ class GeniusViewController: UIViewController, UITableViewDataSource, UITableView
         TableView.dataSource = self
         TableView.registerClass(UITableViewCell.self,
             forCellReuseIdentifier: "Cell")
-        
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        if let name = defaults.objectForKey("ingredients")
-//        {
-//            print(name)
-//        }
-        //var arrayOfText : NSArray = userDefaults.objectForKey("ingredients") as! NSArray
+        // fetch Core Data
+        do{
+            fetchedIngredient = try moc.executeFetchRequest(ingredientFetch) as! [Cabinet]           
+//            print(fetchedIngredient.first!.ingredient)
+//            print(fetchedIngredient.last!.ingredient)
+        } catch {
+            fatalError()
+        }
+    
     }
-    
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 0
+            return fetchedIngredient.capacity
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        //cell.textLabel?.text = ingredientArray[indexPath.row]
+        do{
+            fetchedIngredient = try moc.executeFetchRequest(ingredientFetch) as! [Cabinet]
+            cell.textLabel?.text = fetchedIngredient[indexPath.row].ingredient
+        } catch {
+            fatalError("bad things happened: \(error)")
+        }
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        let alert = UIAlertController(title: "Remove " + ingredientArray[indexPath.row],
-//            message: "No more " + ingredientArray[indexPath.row] + " in your cabinet?",
-//            preferredStyle: .Alert)
-//        
-//        let deleteAction = UIAlertAction(title: "Remove",
-//            style: .Default,
-//            handler: { (action:UIAlertAction) -> Void in
-//                
-//                self.ingredientArray = self.ingredientArray.filter{$0 != self.ingredientArray[indexPath.row]}
-//                self.TableView.reloadData()
-//        })
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel",
-//            style: .Default) { (action: UIAlertAction) -> Void in
-//        }
-//        
-//        alert.addAction(cancelAction)
-//        alert.addAction(deleteAction)
-//        
-//        presentViewController(alert,
-//            animated: true,
-//            completion: nil)
+
     }
 
     override func didReceiveMemoryWarning() {
