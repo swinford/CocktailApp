@@ -47,12 +47,12 @@ class DrinkViewController: UIViewController, UITableViewDataSource, UITableViewD
             DrinkInstructions.text = passedValue!.strInstructions
             DrinkGlass.text = passedValue!.strGlass
             DrinkType.text = passedValue!.strCategory
-            DrinkAlcoholic.text = passedValue!.strAlcoholic
+            //DrinkAlcoholic.text = passedValue!.strAlcoholic
             
-            instructionScrollView.contentSize.height = DrinkInstructions.frame.size.height
-            instructionScrollView.contentSize.width = DrinkInstructions.frame.size.width
-            instructionScrollView.addSubview(DrinkInstructions)
-            view.addSubview(instructionScrollView)
+//            instructionScrollView.contentSize.height = DrinkInstructions.frame.size.height
+//            instructionScrollView.contentSize.width = DrinkInstructions.frame.size.width
+//            instructionScrollView.addSubview(DrinkInstructions)
+//            view.addSubview(instructionScrollView)
             
             let imageString = passedValue!.strDrinkThumb
             if (imageString == ""){
@@ -133,12 +133,12 @@ class DrinkViewController: UIViewController, UITableViewDataSource, UITableViewD
             DrinkInstructions.text = randomDrinkValue!.strInstructions
             DrinkGlass.text = randomDrinkValue!.strGlass
             DrinkType.text = randomDrinkValue!.strCategory
-            DrinkAlcoholic.text = randomDrinkValue!.strAlcoholic
+            //DrinkAlcoholic.text = randomDrinkValue!.strAlcoholic
             
-            instructionScrollView.contentSize.height = DrinkInstructions.frame.size.height
-            instructionScrollView.contentSize.width = DrinkInstructions.frame.size.width
-            instructionScrollView.addSubview(DrinkInstructions)
-            view.addSubview(instructionScrollView)
+//            instructionScrollView.contentSize.height = DrinkInstructions.frame.size.height
+//            instructionScrollView.contentSize.width = DrinkInstructions.frame.size.width
+//            instructionScrollView.addSubview(DrinkInstructions)
+//            view.addSubview(instructionScrollView)
             
             let imageString = randomDrinkValue!.strDrinkThumb
             if (imageString == ""){

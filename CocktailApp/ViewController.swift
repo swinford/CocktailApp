@@ -11,16 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var RandomDrinkName: UILabel!
-    @IBOutlet weak var RandomDrinkImage: UIImageView!
-    
     @IBOutlet weak var RandomDrinkButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationItem!
-    
-    @IBOutlet weak var GeniusButton: UIButton!
-    @IBOutlet weak var CabinetButton: UIButton!
-    @IBOutlet weak var BACButton: UIButton!
-    @IBOutlet weak var StoreButton: UIButton!
-    @IBOutlet weak var SearchButton: UIButton!
+
     var TableData:Array< RandomDrink > = Array < RandomDrink >()
     
     var drinkToPass: RandomDrink!
@@ -261,10 +254,14 @@ class ViewController: UIViewController {
                         self.adrink.strMeasure15 = strMeasure15
                     }
                     self.TableData.append(self.adrink)
-                    self.RandomDrinkName.text = self.adrink.strDrink
+                    //self.RandomDrinkName.text = self.adrink.strDrink
                     
                     self.drinkToPass = self.adrink
                     let imageString = self.adrink.strDrinkThumb
+                    let drinkName = self.adrink.strDrink
+                    
+                    self.navigationItem.title  = drinkName
+                    
                     if (imageString == ""){
                         let noDrinkImage : UIImage = UIImage(named: "noimage.jpg")!
                         self.RandomDrinkButton.setImage(noDrinkImage, forState: UIControlState.Normal)
