@@ -13,9 +13,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     @IBOutlet weak var TableView: UITableView!
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var SearchNavigation: UINavigationItem!
-    var valueToPass: Drinks!
-    var isSearching: Bool = false
     
+    var isSearching: Bool = false
+    var indicator = UIActivityIndicatorView()
+        
+    var valueToPass: Drinks!
     class Drinks {
         var idDrink: Int = 0
         var strDrink: String = ""
@@ -102,7 +104,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 print("Error: cannot create URL")
                 return
             }
-            
+
             let urlRequest = NSURLRequest(URL: url)
             let config = NSURLSessionConfiguration.defaultSessionConfiguration()
             let session = NSURLSession(configuration: config)
@@ -262,6 +264,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        activityIndicator()
+        indicator.startAnimating()
+        indicator.backgroundColor = UIColor.clearColor()
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         cell.textLabel?.text = TableData[indexPath.row].strDrink
         cell.detailTextLabel?.text = TableData[indexPath.row].strGlass
@@ -275,6 +281,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             let drinkImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:TableData[indexPath.row].strDrinkThumb)!)!)
             cell.imageView!.image = drinkImage
         }
+        indicator.stopAnimating()
+        indicator.hidesWhenStopped = true
+        
         return cell
     }
     
@@ -307,6 +316,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             drinkViewController.passedValue = valueToPass
             drinkViewController.passedValue = sender as! Drinks
         }
+    }
+    
+    func activityIndicator(){
+        indicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 80, 80))
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        indicator.center = self.TableView.center
+        self.view.addSubview(indicator)
     }
 
 }

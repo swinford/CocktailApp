@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var RandomDrinkName: UILabel!
     @IBOutlet weak var RandomDrinkImage: UIImageView!
     
+    @IBOutlet weak var RandomDrinkButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationItem!
     
     @IBOutlet weak var GeniusButton: UIButton!
@@ -20,9 +21,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var BACButton: UIButton!
     @IBOutlet weak var StoreButton: UIButton!
     @IBOutlet weak var SearchButton: UIButton!
-    var TableData:Array< Drinks > = Array < Drinks >()
-
-    class Drinks {
+    var TableData:Array< RandomDrink > = Array < RandomDrink >()
+    
+    var drinkToPass: RandomDrink!
+    let adrink = RandomDrink()
+    var indicator = UIActivityIndicatorView()
+    
+    
+    class RandomDrink {
         var idDrink: Int = 0
         var strDrink: String = ""
         var strCategory: String = ""
@@ -73,32 +79,42 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //RandomDrinkButton.addTarget(self, action: "RandomDrinkButtonPressed:", forControlEvents: .TouchUpInside)
+        
         //SearchButton.backgroundColor = UIColor.grayColor()
-        SearchButton.layer.cornerRadius = 3
-        SearchButton.layer.borderWidth = 1
-        SearchButton.layer.borderColor = UIColor.blackColor().CGColor
-        //StoreButton.backgroundColor = UIColor.grayColor()
-        StoreButton.layer.cornerRadius = 3
-        StoreButton.layer.borderWidth = 1
-        StoreButton.layer.borderColor = UIColor.blackColor().CGColor
-        //BACButton.backgroundColor = UIColor.grayColor()
-        BACButton.layer.cornerRadius = 3
-        BACButton.layer.borderWidth = 1
-        BACButton.layer.borderColor = UIColor.blackColor().CGColor
-        //CabinetButton.backgroundColor = UIColor.grayColor()
-        CabinetButton.layer.cornerRadius = 3
-        CabinetButton.layer.borderWidth = 1
-        CabinetButton.layer.borderColor = UIColor.blackColor().CGColor
-        //GeniusButton.backgroundColor = UIColor.grayColor()
-        GeniusButton.layer.cornerRadius = 3
-        GeniusButton.layer.borderWidth = 1
-        GeniusButton.layer.borderColor = UIColor.blackColor().CGColor
-        let imageView = self.RandomDrinkImage
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
-        imageView.userInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGestureRecognizer)
+//        SearchButton.layer.cornerRadius = 3
+//        SearchButton.layer.borderWidth = 1
+//        SearchButton.layer.borderColor = UIColor.blackColor().CGColor
+//        //StoreButton.backgroundColor = UIColor.grayColor()
+//        StoreButton.layer.cornerRadius = 3
+//        StoreButton.layer.borderWidth = 1
+//        StoreButton.layer.borderColor = UIColor.blackColor().CGColor
+//        //BACButton.backgroundColor = UIColor.grayColor()
+//        BACButton.layer.cornerRadius = 3
+//        BACButton.layer.borderWidth = 1
+//        BACButton.layer.borderColor = UIColor.blackColor().CGColor
+//        //CabinetButton.backgroundColor = UIColor.grayColor()
+//        CabinetButton.layer.cornerRadius = 3
+//        CabinetButton.layer.borderWidth = 1
+//        CabinetButton.layer.borderColor = UIColor.blackColor().CGColor
+//        //GeniusButton.backgroundColor = UIColor.grayColor()
+//        GeniusButton.layer.cornerRadius = 3
+//        GeniusButton.layer.borderWidth = 1
+//        GeniusButton.layer.borderColor = UIColor.blackColor().CGColor
+//        let imageView = self.RandomDrinkImage
+//        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        //imageView.userInteractionEnabled = true
+        //imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        RandomDrinkButton.addTarget(self, action: "randomButtonPressed:", forControlEvents: .TouchUpInside)
+
         
         let postEndpoint: String = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
+        
+        activityIndicator()
+        indicator.startAnimating()
+        indicator.backgroundColor = UIColor.clearColor()
         
         guard let url = NSURL(string: postEndpoint) else {
             print("Error: cannot create URL")
@@ -133,128 +149,133 @@ class ViewController: UIViewController {
             if let drinks = post["drinks"] as? [NSDictionary] {
                 self.TableData.removeAll()
                 for drink in drinks {
-                    let adrink = Drinks()
                     if let strDrink = drink["strDrink"] as? String {
                         print(String(count) + ". " + strDrink)
-                        adrink.strDrink = strDrink
+                        self.adrink.strDrink = strDrink
                         count++
                     }
                     if let strDrinkThumb = drink["strDrinkThumb"] as? String {
                         print("    " + strDrinkThumb)
-                        adrink.strDrinkThumb = strDrinkThumb
+                        self.adrink.strDrinkThumb = strDrinkThumb
                     }
                     if let strGlass = drink["strGlass"] as? String {
-                        adrink.strGlass = strGlass
+                        self.adrink.strGlass = strGlass
                     }
                     if let strCategory = drink["strCategory"] as? String {
-                        adrink.strCategory = strCategory
+                        self.adrink.strCategory = strCategory
                     }
                     if let strAlcoholic = drink["strAlcoholic"] as? String {
-                        adrink.strAlcoholic = strAlcoholic
+                        self.adrink.strAlcoholic = strAlcoholic
                     }
                     if let strInstructions = drink["strInstructions"] as? String {
-                        adrink.strInstructions = strInstructions
+                        self.adrink.strInstructions = strInstructions
                     }
                     if let strIngredient1 = drink["strIngredient1"] as? String {
-                        adrink.strIngredient1 = strIngredient1
+                        self.adrink.strIngredient1 = strIngredient1
                     }
                     if let strIngredient2 = drink["strIngredient2"] as? String {
-                        adrink.strIngredient2 = strIngredient2
+                        self.adrink.strIngredient2 = strIngredient2
                     }
                     if let strIngredient3 = drink["strIngredient3"] as? String {
-                        adrink.strIngredient3 = strIngredient3
+                        self.adrink.strIngredient3 = strIngredient3
                     }
                     if let strIngredient4 = drink["strIngredient4"] as? String {
-                        adrink.strIngredient4 = strIngredient4
+                        self.adrink.strIngredient4 = strIngredient4
                     }
                     if let strIngredient5 = drink["strIngredient5"] as? String {
-                        adrink.strIngredient5 = strIngredient5
+                        self.adrink.strIngredient5 = strIngredient5
                     }
                     if let strIngredient6 = drink["strIngredient6"] as? String {
-                        adrink.strIngredient6 = strIngredient6
+                        self.adrink.strIngredient6 = strIngredient6
                     }
                     if let strIngredient7 = drink["strIngredient7"] as? String {
-                        adrink.strIngredient7 = strIngredient7
+                        self.adrink.strIngredient7 = strIngredient7
                     }
                     if let strIngredient8 = drink["strIngredient8"] as? String {
-                        adrink.strIngredient8 = strIngredient8
+                        self.adrink.strIngredient8 = strIngredient8
                     }
                     if let strIngredient9 = drink["strIngredient9"] as? String {
-                        adrink.strIngredient9 = strIngredient9
+                        self.adrink.strIngredient9 = strIngredient9
                     }
                     if let strIngredient10 = drink["strIngredient10"] as? String {
-                        adrink.strIngredient10 = strIngredient10
+                        self.adrink.strIngredient10 = strIngredient10
                     }
                     if let strIngredient11 = drink["strIngredient11"] as? String {
-                        adrink.strIngredient11 = strIngredient11
+                        self.adrink.strIngredient11 = strIngredient11
                     }
                     if let strIngredient12 = drink["strIngredient12"] as? String {
-                        adrink.strIngredient12 = strIngredient12
+                        self.adrink.strIngredient12 = strIngredient12
                     }
                     if let strIngredient13 = drink["strIngredient13"] as? String {
-                        adrink.strIngredient13 = strIngredient13
+                        self.adrink.strIngredient13 = strIngredient13
                     }
                     if let strIngredient14 = drink["strIngredient14"] as? String {
-                        adrink.strIngredient14 = strIngredient14
+                        self.adrink.strIngredient14 = strIngredient14
                     }
                     if let strIngredient15 = drink["strIngredient15"] as? String {
-                        adrink.strIngredient15 = strIngredient15
+                        self.adrink.strIngredient15 = strIngredient15
                     }
                     if let strMeasure1 = drink["strMeasure1"] as? String {
-                        adrink.strMeasure1 = strMeasure1
+                        self.adrink.strMeasure1 = strMeasure1
                     }
                     if let strMeasure2 = drink["strMeasure2"] as? String {
-                        adrink.strMeasure2 = strMeasure2
+                        self.adrink.strMeasure2 = strMeasure2
                     }
                     if let strMeasure3 = drink["strMeasure3"] as? String {
-                        adrink.strMeasure3 = strMeasure3
+                        self.adrink.strMeasure3 = strMeasure3
                     }
                     if let strMeasure4 = drink["strMeasure4"] as? String {
-                        adrink.strMeasure4 = strMeasure4
+                        self.adrink.strMeasure4 = strMeasure4
                     }
                     if let strMeasure5 = drink["strMeasure5"] as? String {
-                        adrink.strMeasure5 = strMeasure5
+                        self.adrink.strMeasure5 = strMeasure5
                     }
                     if let strMeasure6 = drink["strMeasure6"] as? String {
-                        adrink.strMeasure6 = strMeasure6
+                        self.adrink.strMeasure6 = strMeasure6
                     }
                     if let strMeasure7 = drink["strMeasure7"] as? String {
-                        adrink.strMeasure7 = strMeasure7
+                        self.adrink.strMeasure7 = strMeasure7
                     }
                     if let strMeasure8 = drink["strMeasure8"] as? String {
-                        adrink.strMeasure8 = strMeasure8
+                        self.adrink.strMeasure8 = strMeasure8
                     }
                     if let strMeasure9 = drink["strMeasure9"] as? String {
-                        adrink.strMeasure9 = strMeasure9
+                        self.adrink.strMeasure9 = strMeasure9
                     }
                     if let strMeasure10 = drink["strMeasure10"] as? String {
-                        adrink.strMeasure10 = strMeasure10
+                        self.adrink.strMeasure10 = strMeasure10
                     }
                     if let strMeasure11 = drink["strMeasure11"] as? String {
-                        adrink.strMeasure11 = strMeasure11
+                        self.adrink.strMeasure11 = strMeasure11
                     }
                     if let strMeasure12 = drink["strMeasure12"] as? String {
-                        adrink.strMeasure12 = strMeasure12
+                        self.adrink.strMeasure12 = strMeasure12
                     }
                     if let strMeasure13 = drink["strMeasure13"] as? String {
-                        adrink.strMeasure13 = strMeasure13
+                        self.adrink.strMeasure13 = strMeasure13
                     }
                     if let strMeasure14 = drink["strMeasure14"] as? String {
-                        adrink.strMeasure14 = strMeasure14
+                        self.adrink.strMeasure14 = strMeasure14
                     }
                     if let strMeasure15 = drink["strMeasure15"] as? String {
-                        adrink.strMeasure15 = strMeasure15
+                        self.adrink.strMeasure15 = strMeasure15
                     }
-                    self.TableData.append(adrink)
-                    self.RandomDrinkName.text = adrink.strDrink
+                    self.TableData.append(self.adrink)
+                    self.RandomDrinkName.text = self.adrink.strDrink
                     
-                    let imageString = adrink.strDrinkThumb
+                    self.drinkToPass = self.adrink
+                    let imageString = self.adrink.strDrinkThumb
                     if (imageString == ""){
                         let noDrinkImage : UIImage = UIImage(named: "noimage.jpg")!
-                        self.RandomDrinkImage.image = noDrinkImage
+                        self.RandomDrinkButton.setImage(noDrinkImage, forState: UIControlState.Normal)
+                        self.indicator.stopAnimating()
+                        self.indicator.hidesWhenStopped = true
+                        
                     }else{
-                        let drinkImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:adrink.strDrinkThumb)!)!)
-                        self.RandomDrinkImage.image = drinkImage
+                        let drinkImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:self.adrink.strDrinkThumb)!)!)
+                        self.RandomDrinkButton.setBackgroundImage(drinkImage, forState: .Normal)
+                        self.indicator.stopAnimating()
+                        self.indicator.hidesWhenStopped = true
                     }
                 }
             }
@@ -263,11 +284,26 @@ class ViewController: UIViewController {
         task.resume()
     }
     
-    func imageTapped(img: AnyObject)
+    @IBAction func randomButtonPressed(sender: UIButton)
     {
-        // Your action
+        self.performSegueWithIdentifier("RandomDrinkSegue", sender: adrink)
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "RandomDrinkSegue") {
+
+            let drinkViewController = segue.destinationViewController as! DrinkViewController
+            drinkViewController.randomDrinkValue = drinkToPass
+            drinkViewController.randomDrinkValue = sender as! RandomDrink
+        }
+    }
+    func activityIndicator(){
+        indicator = UIActivityIndicatorView(frame: CGRectMake(80, 80, 80, 80))
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        indicator.center = self.RandomDrinkButton.center
+        self.view.addSubview(indicator)
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

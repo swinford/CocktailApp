@@ -3,7 +3,11 @@
     <entity name="Cabinet" representedClassName=".Cabinet" syncable="YES">
         <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Favorites" representedClassName=".Favorites" syncable="YES">
+        <attribute name="cocktail" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Cabinet" positionX="-63" positionY="-18" width="128" height="58"/>
+        <element name="Favorites" positionX="-63" positionY="-9" width="128" height="60"/>
     </elements>
 </model>
