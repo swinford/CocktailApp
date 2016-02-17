@@ -10,9 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var RandomDrinkName: UILabel!
     @IBOutlet weak var RandomDrinkButton: UIButton!
-    @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet weak var NagivationBar: UINavigationItem!
 
     var TableData:Array< RandomDrink > = Array < RandomDrink >()
     
@@ -72,6 +71,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showShakeAlert()
         
         //RandomDrinkButton.addTarget(self, action: "RandomDrinkButtonPressed:", forControlEvents: .TouchUpInside)
         
@@ -258,10 +259,9 @@ class ViewController: UIViewController {
                     
                     self.drinkToPass = self.adrink
                     let imageString = self.adrink.strDrinkThumb
-                    let drinkName = self.adrink.strDrink
-                    
-                    self.navigationItem.title  = drinkName
-                    
+//                    let drinkName = self.adrink.strDrink
+//                    self.NagivationBar.title = drinkName
+                
                     if (imageString == ""){
                         let noDrinkImage : UIImage = UIImage(named: "noimage.jpg")!
                         self.RandomDrinkButton.setImage(noDrinkImage, forState: UIControlState.Normal)
@@ -300,7 +300,197 @@ class ViewController: UIViewController {
         self.view.addSubview(indicator)
         
     }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            let postEndpoint: String = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
+            
+            RandomDrinkButton.setImage(nil, forState: .Normal)
+            
+            activityIndicator()
+            indicator.startAnimating()
+            indicator.backgroundColor = UIColor.clearColor()
+            
+            guard let url = NSURL(string: postEndpoint) else {
+                print("Error: cannot create URL")
+                return
+            }
+            
+            let urlRequest = NSURLRequest(URL: url)
+            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let session = NSURLSession(configuration: config)
+            
+            let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
+                guard let responseData = data else {
+                    print("Error: did not receive data")
+                    return
+                }
+                guard error == nil else {
+                    print("error calling GET on www.thecocktaildb.com")
+                    print(error)
+                    return
+                }
+                
+                let post: NSDictionary
+                do {
+                    post = try NSJSONSerialization.JSONObjectWithData(responseData,
+                        options: []) as! NSDictionary
+                } catch  {
+                    print("error trying to convert data to JSON")
+                    return
+                }
+                
+                var count = 1
+                if let drinks = post["drinks"] as? [NSDictionary] {
+                    self.TableData.removeAll()
+                    for drink in drinks {
+                        if let strDrink = drink["strDrink"] as? String {
+                            print(String(count) + ". " + strDrink)
+                            self.adrink.strDrink = strDrink
+                            count++
+                        }
+                        if let strDrinkThumb = drink["strDrinkThumb"] as? String {
+                            print("    " + strDrinkThumb)
+                            self.adrink.strDrinkThumb = strDrinkThumb
+                        }
+                        if let strGlass = drink["strGlass"] as? String {
+                            self.adrink.strGlass = strGlass
+                        }
+                        if let strCategory = drink["strCategory"] as? String {
+                            self.adrink.strCategory = strCategory
+                        }
+                        if let strAlcoholic = drink["strAlcoholic"] as? String {
+                            self.adrink.strAlcoholic = strAlcoholic
+                        }
+                        if let strInstructions = drink["strInstructions"] as? String {
+                            self.adrink.strInstructions = strInstructions
+                        }
+                        if let strIngredient1 = drink["strIngredient1"] as? String {
+                            self.adrink.strIngredient1 = strIngredient1
+                        }
+                        if let strIngredient2 = drink["strIngredient2"] as? String {
+                            self.adrink.strIngredient2 = strIngredient2
+                        }
+                        if let strIngredient3 = drink["strIngredient3"] as? String {
+                            self.adrink.strIngredient3 = strIngredient3
+                        }
+                        if let strIngredient4 = drink["strIngredient4"] as? String {
+                            self.adrink.strIngredient4 = strIngredient4
+                        }
+                        if let strIngredient5 = drink["strIngredient5"] as? String {
+                            self.adrink.strIngredient5 = strIngredient5
+                        }
+                        if let strIngredient6 = drink["strIngredient6"] as? String {
+                            self.adrink.strIngredient6 = strIngredient6
+                        }
+                        if let strIngredient7 = drink["strIngredient7"] as? String {
+                            self.adrink.strIngredient7 = strIngredient7
+                        }
+                        if let strIngredient8 = drink["strIngredient8"] as? String {
+                            self.adrink.strIngredient8 = strIngredient8
+                        }
+                        if let strIngredient9 = drink["strIngredient9"] as? String {
+                            self.adrink.strIngredient9 = strIngredient9
+                        }
+                        if let strIngredient10 = drink["strIngredient10"] as? String {
+                            self.adrink.strIngredient10 = strIngredient10
+                        }
+                        if let strIngredient11 = drink["strIngredient11"] as? String {
+                            self.adrink.strIngredient11 = strIngredient11
+                        }
+                        if let strIngredient12 = drink["strIngredient12"] as? String {
+                            self.adrink.strIngredient12 = strIngredient12
+                        }
+                        if let strIngredient13 = drink["strIngredient13"] as? String {
+                            self.adrink.strIngredient13 = strIngredient13
+                        }
+                        if let strIngredient14 = drink["strIngredient14"] as? String {
+                            self.adrink.strIngredient14 = strIngredient14
+                        }
+                        if let strIngredient15 = drink["strIngredient15"] as? String {
+                            self.adrink.strIngredient15 = strIngredient15
+                        }
+                        if let strMeasure1 = drink["strMeasure1"] as? String {
+                            self.adrink.strMeasure1 = strMeasure1
+                        }
+                        if let strMeasure2 = drink["strMeasure2"] as? String {
+                            self.adrink.strMeasure2 = strMeasure2
+                        }
+                        if let strMeasure3 = drink["strMeasure3"] as? String {
+                            self.adrink.strMeasure3 = strMeasure3
+                        }
+                        if let strMeasure4 = drink["strMeasure4"] as? String {
+                            self.adrink.strMeasure4 = strMeasure4
+                        }
+                        if let strMeasure5 = drink["strMeasure5"] as? String {
+                            self.adrink.strMeasure5 = strMeasure5
+                        }
+                        if let strMeasure6 = drink["strMeasure6"] as? String {
+                            self.adrink.strMeasure6 = strMeasure6
+                        }
+                        if let strMeasure7 = drink["strMeasure7"] as? String {
+                            self.adrink.strMeasure7 = strMeasure7
+                        }
+                        if let strMeasure8 = drink["strMeasure8"] as? String {
+                            self.adrink.strMeasure8 = strMeasure8
+                        }
+                        if let strMeasure9 = drink["strMeasure9"] as? String {
+                            self.adrink.strMeasure9 = strMeasure9
+                        }
+                        if let strMeasure10 = drink["strMeasure10"] as? String {
+                            self.adrink.strMeasure10 = strMeasure10
+                        }
+                        if let strMeasure11 = drink["strMeasure11"] as? String {
+                            self.adrink.strMeasure11 = strMeasure11
+                        }
+                        if let strMeasure12 = drink["strMeasure12"] as? String {
+                            self.adrink.strMeasure12 = strMeasure12
+                        }
+                        if let strMeasure13 = drink["strMeasure13"] as? String {
+                            self.adrink.strMeasure13 = strMeasure13
+                        }
+                        if let strMeasure14 = drink["strMeasure14"] as? String {
+                            self.adrink.strMeasure14 = strMeasure14
+                        }
+                        if let strMeasure15 = drink["strMeasure15"] as? String {
+                            self.adrink.strMeasure15 = strMeasure15
+                        }
+                        self.TableData.append(self.adrink)
+                        //self.RandomDrinkName.text = self.adrink.strDrink
+                        
+                        self.drinkToPass = self.adrink
+                        let imageString = self.adrink.strDrinkThumb
+                        //                    let drinkName = self.adrink.strDrink
+                        //                    self.NagivationBar.title = drinkName
+                        
+                        if (imageString == ""){
+                            let noDrinkImage : UIImage = UIImage(named: "noimage.jpg")!
+                            self.RandomDrinkButton.setImage(noDrinkImage, forState: UIControlState.Normal)
+                            self.indicator.stopAnimating()
+                            self.indicator.hidesWhenStopped = true
+                            
+                        }else{
+                            let drinkImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:self.adrink.strDrinkThumb)!)!)
+                            self.RandomDrinkButton.setBackgroundImage(drinkImage, forState: .Normal)
+                            self.indicator.stopAnimating()
+                            self.indicator.hidesWhenStopped = true
+                        }
+                    }
+                }
+            })
+            task.resume()
+        }
+    }
 
+
+    @IBAction func showShakeAlert() {
+        // create the alert
+        let alert = UIAlertController(title: "Random Cocktail", message: "Shake the device to display a random cocktail!", preferredStyle: UIAlertControllerStyle.Alert)
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        // show the alert
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
