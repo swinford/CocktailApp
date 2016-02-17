@@ -11,13 +11,11 @@ import Foundation
 import QuartzCore
 
 class BACViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
-    var BAC: Double = 0.00
-    var beers: Int = 0
-    var wine: Int = 0
-    var shots: Int = 0
+    @IBOutlet weak var invalidWeight: UILabel!
+    var startDate: NSDate?
     @IBOutlet weak var gender: UISegmentedControl!
     @IBOutlet weak var weight: UIPickerView!
-    let weightData = ["50", "60" ,"70", "80", "90", "100"]
+    var weightData = ["50", "60" ,"70", "80", "90", "100", "200"]
     @IBOutlet weak var weightLabel: UILabel!
     
     let male: Double = 0.73
@@ -25,6 +23,7 @@ class BACViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     let beerABV: Double = 0.045
     let wineABV: Double = 0.116
     let shotABV: Double = 0.37
+
     
     @IBOutlet weak var TextViewTime: UITextField!
     
@@ -32,12 +31,17 @@ class BACViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
         super.viewDidLoad()
         weight.dataSource = self
         weight.delegate = self
+        shotControllerOutlet.minimumValue = 0
+        beerControllerOutlet.minimumValue = 0
+        wineControllerOutlet.minimumValue = 0
+        invalidWeight.layer.cornerRadius = 5
     }
-
+    
     @IBAction func editTimeButton(sender: UIButton) {
         DatePickerDialog().show("Begin Time", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .Time) {
             (date) -> Void in
             self.TextViewTime.text = self.convertDate(date)
+            self.startDate = date
         }
     }
     
@@ -57,34 +61,88 @@ class BACViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
         weightLabel.text = weightData[row]
     }
     
-    func addShot()
-    {
-        shots++
+    //Shots controller
+    @IBOutlet weak var shots: UILabel!
+    @IBOutlet weak var shotControllerOutlet: UIStepper!
+    @IBAction func shotController(sender: UIStepper) {
+        shots.text = Int(sender.value).description
+    }
+
+    //Beer controller
+    @IBOutlet weak var beers: UILabel!
+    @IBOutlet weak var beerControllerOutlet: UIStepper!
+    
+    @IBAction func beerController(sender: UIStepper) {
+        beers.text = Int(sender.value).description
     }
     
-    func addBeer()
-    {
-        beers++
+    //Wine controller
+    @IBOutlet weak var wine: UILabel!
+    @IBOutlet weak var wineControllerOutlet: UIStepper!
+    @IBAction func wineController(sender: UIStepper) {
+        wine.text = Int(sender.value).description
     }
     
-    func addWine()
-    {
-        wine++
-    }
-    
-    func subShot()
-    {
-        shots--
-    }
-    
-    func subBeer()
-    {
-        beers--
-    }
-    
-    func subWine()
-    {
-        wine--
+    @IBOutlet weak var bac: UILabel!
+    @IBAction func calculateButton(sender: UIButton) {
+        let currentDate = NSDate()
+        
+        let calendar = NSCalendar.currentCalendar()
+        let comp = calendar.components([.Hour, .Minute], fromDate: startDate!)
+        let hourStart = comp.hour
+        let minuteStart = comp.minute
+        
+        let comp1 = calendar.components([.Hour, .Minute], fromDate: currentDate)
+        let hourCurrent = comp1.hour
+        let minuteCurrent = comp1.minute
+        
+        var minDif = (hourCurrent - hourStart) * 60
+        minDif = minDif + minuteCurrent - minuteStart
+        
+        //Determines the gender of the user
+        var genderMultiplier: Double
+        if gender.selected == false{
+            genderMultiplier = 0.73
+        }
+        else{
+            genderMultiplier = 0.66
+        }
+        
+        //Gets number or ounces consumed
+        var abv = Double(beers.text!)! * 12 * beerABV
+        abv = abv + Double(shots.text!)! * 1.5 * shotABV
+        abv = abv + Double(wine.text!)! * 5 * wineABV
+        
+        //Gets weight
+        var weightFinal: Double = 0.0
+        if weightLabel.text! != "Weight"{
+            weightFinal = Double(weightLabel.text!)!
+        }
+        else{
+            invalidWeight.hidden = false
+            sleep(5)
+            invalidWeight.hidden = true
+        }
+        
+        var bacNum: Double = abv * 5.14 / weightFinal * genderMultiplier
+        bacNum = bacNum - 0.015 * Double(minDif)/60.0
+        bacNum = round(1000 * bacNum) / 1000
+        if bacNum < 0{
+            bacNum = 0
+        }
+        bac.text = String(bacNum)
+        
+        if bacNum <= 0.03{
+            bac.textColor = UIColor.greenColor()
+        }
+        else if bacNum <= 0.05 && bacNum > 0.03{
+            bac.textColor = UIColor.yellowColor()
+        }
+        else{
+            bac.textColor = UIColor.redColor()
+        }
+        
+        bac.hidden = false
     }
     
     override func didReceiveMemoryWarning() {
