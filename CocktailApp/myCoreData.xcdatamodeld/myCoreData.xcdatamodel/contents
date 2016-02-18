@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="BAC" representedClassName=".BAC" syncable="YES">
+        <attribute name="bac" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="beers" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="shots" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="wine" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
     <entity name="Cabinet" representedClassName=".Cabinet" syncable="YES">
         <attribute name="ingredient" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -9,5 +18,6 @@
     <elements>
         <element name="Cabinet" positionX="-63" positionY="-18" width="128" height="58"/>
         <element name="Favorites" positionX="-63" positionY="-9" width="128" height="60"/>
+        <element name="BAC" positionX="-63" positionY="-9" width="128" height="150"/>
     </elements>
 </model>
