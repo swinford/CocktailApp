@@ -85,7 +85,9 @@ class CabinetViewController: UIViewController, UITextFieldDelegate, UITableViewD
             }
         })
         task.resume()
-        TableView.reloadData()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.TableView.reloadData()
+        })
     }
 
     func textFieldDidChange(textField: UITextField) {
@@ -108,9 +110,17 @@ class CabinetViewController: UIViewController, UITextFieldDelegate, UITableViewD
             fatalError("failure to save context: \(error)")
         }
         showAlertButtonTapped(Button)
-//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//            self.TableView.reloadData()
-//        })
+
+        do{
+            fetchedIngredient = try moc.executeFetchRequest(ingredientFetch) as! [Cabinet]
+            self.TableView.beginUpdates()
+            let totalIngredients = fetchedIngredient.count
+            let newItemIndexPath = NSIndexPath(forRow: totalIngredients-1, inSection: 0)
+            self.TableView.insertRowsAtIndexPaths([newItemIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.TableView.endUpdates()
+        } catch {
+            fatalError()
+        }
     }
     
     @IBAction func showAlertButtonTapped(sender: UIButton) {
@@ -133,21 +143,16 @@ class CabinetViewController: UIViewController, UITextFieldDelegate, UITableViewD
         }
     }
     
-    func tableView(tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-            return fetchedIngredient.capacity
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedIngredient.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        do{
-            let fetchedIngredient = try moc.executeFetchRequest(ingredientFetch) as! [Cabinet]
-            cell.textLabel?.text = fetchedIngredient[indexPath.row].ingredient
-        } catch {
-            fatalError("bad things happened: \(error)")
-        }
+        cell.textLabel?.text = fetchedIngredient[indexPath.row].ingredient
         return cell
     }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -166,10 +171,15 @@ class CabinetViewController: UIViewController, UITextFieldDelegate, UITableViewD
                     if let result = fetchedResults[indexPath.row] as? NSManagedObject {
                         self.moc.deleteObject(result)
                         try self.moc.save()
+                        self.TableView.beginUpdates()
+                        let itemIndexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+                        self.TableView.deleteRowsAtIndexPaths([itemIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                        self.TableView.endUpdates()
                     }
                 }catch{
                     fatalError()
                 }
+                
         })
         
         let cancelAction = UIAlertAction(title: "Cancel",

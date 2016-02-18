@@ -1,5 +1,5 @@
 //
-//  StoreViewController.swift
+//  FavoriteViewController.swift
 //  CocktailApp
 //
 //  Created by Zachary Swinford on 12/27/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoreViewController: UIViewController {
+class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
