@@ -9,11 +9,13 @@
 import UIKit
 import Foundation
 import QuartzCore
+import CoreData
 
 class BACViewController: UIViewController,UIPickerViewDelegate {
     var startDate: NSDate?
     @IBOutlet weak var gender: UISegmentedControl!
     
+    let moc = DataController().managedObjectContext
     
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var editWeight: UITextField!
@@ -164,6 +166,19 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 // Get the new view controller using segue.destinationViewController.
 // Pass the selected object to the new view controller.
 
+    let entity = NSEntityDescription.insertNewObjectForEntityForName("BAC", inManagedObjectContext: moc) as! BAC
+    entity.setValue(bac.text, forKey: "bac")
+    entity.setValue(weightFinal, forKey: "gender")
+    entity.setValue(shots.text, forKey: "shots")
+    entity.setValue(beers.text, forKey: "beers")
+    entity.setValue(wine.text, forKey: "wine")
+    entity.setValue(startDate, forKey: "time")
+    
+    do{
+        try moc.save()
+    }catch {
+        fatalError("failure to save context: \(error)")
+    }
 
 }
 

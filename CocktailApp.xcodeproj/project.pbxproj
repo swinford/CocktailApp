@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0725691C7677990007EA3C /* BAC+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0725671C7677990007EA3C /* BAC+CoreDataProperties.swift */; };
+		2B07256A1C7677990007EA3C /* BAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0725681C7677990007EA3C /* BAC.swift */; };
 		2B1E50FC1C6038AF002EF333 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E50FB1C6038AF002EF333 /* DatePickerDialog.swift */; };
 		F42244CE1C30C2A2009036B0 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244CD1C30C2A2009036B0 /* FavoriteViewController.swift */; };
 		F42244D01C30C2BE009036B0 /* BACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42244CF1C30C2BE009036B0 /* BACViewController.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B0725671C7677990007EA3C /* BAC+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BAC+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2B0725681C7677990007EA3C /* BAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BAC.swift; sourceTree = "<group>"; };
 		2B1E50FB1C6038AF002EF333 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		F42244CD1C30C2A2009036B0 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F42244CF1C30C2BE009036B0 /* BACViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BACViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 		F44B484F1C2E5EAE00511866 = {
 			isa = PBXGroup;
 			children = (
+				2B0725671C7677990007EA3C /* BAC+CoreDataProperties.swift */,
+				2B0725681C7677990007EA3C /* BAC.swift */,
 				F456F3AE1C6934FA0043A89C /* Favorites+CoreDataProperties.swift */,
 				F456F3AF1C6934FA0043A89C /* Favorites.swift */,
 				F4D010DB1C61635700D11B67 /* Cabinet+CoreDataProperties.swift */,
@@ -310,7 +316,9 @@
 				2B1E50FC1C6038AF002EF333 /* DatePickerDialog.swift in Sources */,
 				F42244D41C30C2EA009036B0 /* GeniusViewController.swift in Sources */,
 				F4291B3B1C4043F900F77569 /* DrinkViewController.swift in Sources */,
+				2B0725691C7677990007EA3C /* BAC+CoreDataProperties.swift in Sources */,
 				F4D010D71C6160A300D11B67 /* DataController.swift in Sources */,
+				2B07256A1C7677990007EA3C /* BAC.swift in Sources */,
 				F4D010D81C6160A300D11B67 /* myCoreData.xcdatamodeld in Sources */,
 				F42244D21C30C2D8009036B0 /* CabinetViewController.swift in Sources */,
 				F4D010DD1C61635700D11B67 /* Cabinet+CoreDataProperties.swift in Sources */,
