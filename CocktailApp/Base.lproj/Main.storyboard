@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2bj-Yd-nd1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2bj-Yd-nd1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Startup-->
@@ -287,11 +287,8 @@
                                     <segment title="Female"/>
                                 </segments>
                             </segmentedControl>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YdV-za-1v1">
-                                <rect key="frame" x="184" y="184" width="116" height="81"/>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFX-na-yf3">
-                                <rect key="frame" x="51" y="214" width="59" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFX-na-yf3">
+                                <rect key="frame" x="82" y="206" width="59" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -355,20 +352,16 @@
                                     <action selector="calculateButton:" destination="tMm-h4-yI0" eventType="touchUpInside" id="S5r-4O-hBg"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Weight" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zAW-pi-b6g">
+                                <rect key="frame" x="195" y="202" width="105" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdB-Mq-tLo">
-                                <rect key="frame" x="117" y="499" width="87" height="28"/>
+                                <rect key="frame" x="52" y="499" width="216" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invalid weight entered!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z54-rS-5SH">
-                                <rect key="frame" x="30" y="255" width="260" height="57"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="1" height="-2"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -379,11 +372,10 @@
                         <outlet property="bac" destination="xdB-Mq-tLo" id="mb0-vp-ibO"/>
                         <outlet property="beerControllerOutlet" destination="e4V-jg-GDL" id="D1r-Ta-scX"/>
                         <outlet property="beers" destination="2Z2-Jb-GeE" id="Gbc-3f-Pek"/>
+                        <outlet property="editWeight" destination="zAW-pi-b6g" id="BAf-bk-ffR"/>
                         <outlet property="gender" destination="0WK-uy-jrv" id="ld6-ND-Gnr"/>
-                        <outlet property="invalidWeight" destination="Z54-rS-5SH" id="b8p-Im-jDs"/>
                         <outlet property="shotControllerOutlet" destination="n7D-8m-iyO" id="1u3-up-oPT"/>
                         <outlet property="shots" destination="MiX-BD-OEp" id="P1V-h7-e8f"/>
-                        <outlet property="weight" destination="YdV-za-1v1" id="ajC-3F-hQj"/>
                         <outlet property="weightLabel" destination="WFX-na-yf3" id="f7q-vo-4EK"/>
                         <outlet property="wine" destination="Rma-hR-lPU" id="xJn-YE-Vun"/>
                         <outlet property="wineControllerOutlet" destination="ZEB-Yt-iih" id="nuy-kZ-T7e"/>
